@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit Tracker</title>
+    <style>
+      body { font-family: Arial, sans-serif; max-width: 900px; margin: 30px auto; padding: 0 12px; }
+      .row { display: flex; gap: 16px; flex-wrap: wrap; }
+      .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px; flex: 1; min-width: 280px; }
+      input, button { padding: 8px; width: 100%; margin: 6px 0; box-sizing: border-box; }
+      pre { background: #f6f6f6; padding: 10px; overflow: auto; }
+      .habits { margin-top: 10px; }
+      .habit { border: 1px solid #eee; padding: 10px; border-radius: 8px; margin: 8px 0; }
+      .muted { color: #666; font-size: 0.9em; }
+      .week-grid{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin: 8px 0 12px;
+}
+
+.day-cell{
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 10px 6px;
+  display: grid;
+  justify-items: center;   
+  align-content: center;   
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+  background: #fff;
+}
+
+.day-name{
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+}
+.day-cell input[type="checkbox"]{
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+@media (max-width: 700px){
+  .week-grid{ grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 420px){
+  .week-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+    </style>
+  </head>
+  <body>
+    <h1>Habit Tracker</h1>
+    <p class="muted">This is a simple demo UI to test your API.</p>
+
+    <div class="row">
+      <div class="card">
+        <h2>Register</h2>
+        <input id="regUsername" placeholder="username" />
+        <input id="regEmail" placeholder="email" />
+        <input id="regPassword" placeholder="password" type="password" />
+        <button id="btnRegister">Register</button>
+      </div>
+
+      <div class="card">
+        <h2>Login</h2>
+        <input id="loginEmail" placeholder="email" />
+        <input id="loginPassword" placeholder="password" type="password" />
+        <button id="btnLogin">Login</button>
+        <button id="btnLogout">Logout</button>
+        <div class="muted">Token stored in localStorage.</div>
+      </div>
+
+      <div class="card">
+        <h2>Profile (Private)</h2>
+        <button id="btnProfile">Load Profile</button>
+        <pre id="profileOut"></pre>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+      <div class="card">
+        <h2>Create Habit (Private)</h2>
+        <input id="habitName" placeholder="Habit name (e.g., Drink Water)" />
+        <input id="habitDesc" placeholder="Description (optional)" />
+
+<div class="muted">Weekly status (optional)</div>
+
+<div class="week-grid">
+  <label class="day-cell">
+    <span class="day-name">Mon</span>
+    <input type="checkbox" id="mon" />
+  </label>
+  <label class="day-cell">
+    <span class="day-name">Tue</span>
+    <input type="checkbox" id="tue" />
+  </label>
+  <label class="day-cell">
+    <span class="day-name">Wed</span>
+    <input type="checkbox" id="wed" />
+  </label>
+  <label class="day-cell">
+    <span class="day-name">Thu</span>
+    <input type="checkbox" id="thu" />
+  </label>
+  <label class="day-cell">
+    <span class="day-name">Fri</span>
+    <input type="checkbox" id="fri" />
+  </label>
+  <label class="day-cell">
+    <span class="day-name">Sat</span>
+    <input type="checkbox" id="sat" />
+  </label>
+  <label class="day-cell">
+    <span class="day-name">Sun</span>
+    <input type="checkbox" id="sun" />
+  </label>
+</div>
+
+        <button id="btnCreateHabit">Create Habit</button>
+      </div>
+
+      <div class="card">
+        <h2>Habits (Private)</h2>
+        <button id="btnLoadHabits">Load Habits</button>
+        <div id="habitsOut" class="habits"></div>
+      </div>
+
+      <div class="card">
+        <h2>External API (Public)</h2>
+        <button id="btnQuote">Get Quote</button>
+        <pre id="quoteOut"></pre>
+      </div>
+    </div>
+
+    <hr />
+    <h3>Debug Output</h3>
+    <pre id="debugOut"></pre>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
